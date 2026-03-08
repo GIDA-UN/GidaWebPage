@@ -1,4 +1,2 @@
-titulo	estado	fecha_cierre	link_inscripcion	descripcion
-Convocatoria semillero 2026	Cerrada	28/02/2026		"¿Eres estudiante de primeros semestres y quieres fortalecer tu formación académica desde el inicio?
-El Grupo de Investigación y Desarrollo Académico (GIDA UN) abre su convocatoria para el Programa de Semilleros, donde contarás con el acompañamiento de expertos en reuniones y trabajo colaborativo.
-Al finalizar el curso, quienes lo aprueben podrán elegir el equipo de trabajo en el que desean participar."
+titulo,estado,fecha_cierre,link_inscripcion,descripcion
+Semillero 2026,Cerrada,28/02/2026,#,Busqueda de estudiantes de primeros semestres para fortalecer su formacion academica. El grupo GIDA abre su convocatoria para el Programa de Semilleros.
