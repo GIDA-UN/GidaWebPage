@@ -2,23 +2,108 @@
 layout: single
 title: "Convocatorias GIDA"
 permalink: /convocatorias/
+header:
+  overlay_color: "#05070a"
+  overlay_filter: 0.5
+  overlay_image: /assets/images/header-stars.jpg # Asegúrate de tener una imagen de fondo oscuro aquí
+  caption: "Explora nuevas fronteras con GIDA"
 ---
 
-Aquí encontrarás las oportunidades para unirte a nuestros proyectos.
+<style>
+  /* Contenedor principal */
+  .convocatorias-wrapper {
+    margin-top: 20px;
+  }
 
-<div class="convocatorias-lista">
+  /* Tarjeta de convocatoria */
+  .card-gida {
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: #ffffff;
+    transition: transform 0.3s ease;
+    border-left: 10px solid #7f8c8d; /* Gris por defecto */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-gida:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Estado Abierta */
+  .card-abierta {
+    border-left-color: #27ae60 !important;
+  }
+
+  /* Badge de Estado */
+  .status-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75em;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+
+  .badge-abierta { background: #e8f5e9; color: #2e7d32; }
+  .badge-cerrada { background: #f5f5f5; color: #616161; }
+
+  /* Botón de acción */
+  .btn-gida {
+    background: #950001;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background 0.3s;
+  }
+
+  .btn-gida:hover {
+    background: #7a0000;
+  }
+</style>
+
+Aquí encontrarás las oportunidades vigentes para integrarte a nuestros equipos de investigación y desarrollo.
+
+<div class="convocatorias-wrapper">
 {% if site.data.convocatorias %}
-  {% for item in site.data.convocatorias %}
-    <div style="border-left: 10px solid {% if item.estado contains 'Abierta' %}#27ae60{% else %}#7f8c8d{% endif %}; padding: 20px; margin: 20px 0; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-      <h3 style="margin-top: 0;">{{ item.titulo }}</h3>
-      <p><strong>Estado:</strong> {{ item.estado }} | <strong>Cierre:</strong> {{ item.fecha_cierre }}</p>
-      <p>{{ item.descripcion }}</p>
-      {% if item.estado contains 'Abierta' %}
-        <a href="{{ item.link_inscripcion }}" style="background: #950001; color: white !important; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold;">Postularme</a>
+  {% for conv in site.data.convocatorias %}
+    <div class="card-gida {% if conv.estado contains 'Abierta' %}card-abierta{% endif %}">
+      
+      <div class="status-badge {% if conv.estado contains 'Abierta' %}badge-abierta{% else %}badge-cerrada{% endif %}">
+        {{ conv.estado }}
+      </div>
+
+      <h2 style="margin: 0 0 10px 0; color: #333; border-bottom: none;">{{ conv.titulo }}</h2>
+      
+      <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+        <strong>📅 Cierre:</strong> {{ conv.fecha_cierre }}
+      </p>
+
+      <div style="color: #444; line-height: 1.6;">
+        {{ conv.descripcion }}
+      </div>
+
+      {% if conv.estado contains 'Abierta' %}
+        <a href="{{ conv.link_inscripcion }}" class="btn-gida" target="_blank">
+          Postularme ahora
+        </a>
+      {% else %}
+        <p style="margin-top: 20px; color: #999; font-style: italic;">
+          🚫 Esta convocatoria ha finalizado.
+        </p>
       {% endif %}
     </div>
   {% endfor %}
 {% else %}
-  <p>Esperando a que el robot genere los datos... (Sube tu CSV a la carpeta _data).</p>
+  <div class="notice--info">
+    <p>Estamos actualizando la base de datos. Por favor, regresa pronto para ver nuevas vacantes.</p>
+  </div>
 {% endif %}
 </div>
