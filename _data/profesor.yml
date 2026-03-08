@@ -1,0 +1,12 @@
+- nombre: "Jorge Sofrony Esmeral"
+  tipo: "profesor"
+  area: "Director de Investigación"
+  carrera: "Ph.D. en Ingeniería de Control"
+  correo: "jsofronye@unal.edu.co"
+  foto: "/assets/images/miembros/jorge-sofrony.jpg"
+  # ZONA DE CAMBIO: Descripción enriquecida basada en el documento
+  descripcion: >
+    Profesor Asociado del Departamento de Ingeniería Mecánica y Meumatrónica de la Universidad Nacional de Colombia. 
+    Especialista en Control Robusto y Sistemas No Lineales, con amplia trayectoria en la aplicación de algoritmos 
+    de optimización global y control de sistemas multivariables. Su labor investigativa se centra en el desarrollo 
+    de tecnologías para robótica móvil y automatización de procesos complejos.
