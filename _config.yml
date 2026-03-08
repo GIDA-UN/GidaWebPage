@@ -157,7 +157,7 @@ footer:
       url: "https://www.instagram.com/gida_unal/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/company/gida-unal" # O el link de LinkedIn del grupo
+      url: "https://www.linkedin.com/company/gida-un/posts/?feedView=all"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:gida_fibog@unal.edu.co"
