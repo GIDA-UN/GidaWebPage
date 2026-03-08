@@ -5,53 +5,58 @@ permalink: /convocatorias/
 header:
   overlay_color: "#05070a"
   overlay_filter: 0.5
-  overlay_image: /assets/images/header-stars.jpg # Asegúrate de tener una imagen de fondo oscuro aquí
-  caption: "Explora nuevas fronteras con GIDA"
 ---
 
+<div id="mi-header-espacial" style="position: absolute; top: 0; left: 0; width: 100%; height: 400px; z-index: 0; pointer-events: none; overflow: hidden;">
+  <canvas id="canvas-estrellas"></canvas>
+</div>
+
 <style>
-  /* Contenedor principal */
-  .convocatorias-wrapper {
-    margin-top: 20px;
+  /* Ajuste para que el hero permita ver las estrellas */
+  .page__hero--overlay { 
+    position: relative !important; 
+    background-color: #05070a !important; 
+    overflow: hidden; 
+    min-height: 400px;
   }
 
-  /* Tarjeta de convocatoria */
-  .card-gida {
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    background: #ffffff;
-    transition: transform 0.3s ease;
-    border-left: 10px solid #7f8c8d; /* Gris por defecto */
+  .convocatorias-wrapper {
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+    margin-top: 30px;
+  }
+
+  .card-gida {
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-left: 10px solid #7f8c8d;
+    transition: transform 0.3s ease;
   }
 
   .card-gida:hover {
     transform: translateY(-5px);
   }
 
-  /* Estado Abierta */
   .card-abierta {
-    border-left-color: #27ae60 !important;
+    border-left-color: #950001 !important; /* Rojo Institucional */
   }
 
-  /* Badge de Estado */
   .status-badge {
     display: inline-block;
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-size: 0.75em;
-    font-weight: 800;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 15px;
   }
 
-  .badge-abierta { background: #e8f5e9; color: #2e7d32; }
-  .badge-cerrada { background: #f5f5f5; color: #616161; }
+  .badge-abierta { background: #950001; color: #fff; }
+  .badge-cerrada { background: #eee; color: #666; }
 
-  /* Botón de acción */
   .btn-gida {
     background: #950001;
     color: white !important;
@@ -61,49 +66,76 @@ header:
     display: inline-block;
     font-weight: bold;
     margin-top: 15px;
-    transition: background 0.3s;
-  }
-
-  .btn-gida:hover {
-    background: #7a0000;
   }
 </style>
 
-Aquí encontrarás las oportunidades vigentes para integrarte a nuestros equipos de investigación y desarrollo.
-
 <div class="convocatorias-wrapper">
-{% if site.data.convocatorias %}
-  {% for conv in site.data.convocatorias %}
-    <div class="card-gida {% if conv.estado contains 'Abierta' %}card-abierta{% endif %}">
-      
-      <div class="status-badge {% if conv.estado contains 'Abierta' %}badge-abierta{% else %}badge-cerrada{% endif %}">
-        {{ conv.estado }}
-      </div>
+  <p style="text-align: center; color: #666; font-size: 1.1em; margin-bottom: 40px;">
+    Únete a nuestros proyectos de investigación y lleva tu potencial al espacio.
+  </p>
 
-      <h2 style="margin: 0 0 10px 0; color: #333; border-bottom: none;">{{ conv.titulo }}</h2>
-      
-      <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
-        <strong>📅 Cierre:</strong> {{ conv.fecha_cierre }}
-      </p>
+  {% if site.data.convocatorias %}
+    {% for conv in site.data.convocatorias %}
+      <div class="card-gida {% if conv.estado contains 'Abierta' %}card-abierta{% endif %}">
+        <div class="status-badge {% if conv.estado contains 'Abierta' %}badge-abierta{% else %}badge-cerrada{% endif %}">
+          {{ conv.estado }}
+        </div>
 
-      <div style="color: #444; line-height: 1.6;">
-        {{ conv.descripcion }}
-      </div>
-
-      {% if conv.estado contains 'Abierta' %}
-        <a href="{{ conv.link_inscripcion }}" class="btn-gida" target="_blank">
-          Postularme ahora
-        </a>
-      {% else %}
-        <p style="margin-top: 20px; color: #999; font-style: italic;">
-          🚫 Esta convocatoria ha finalizado.
+        <h2 style="margin: 0 0 10px 0; color: #333; border: none;">{{ conv.titulo }}</h2>
+        
+        <p style="color: #950001; font-weight: bold;">
+          📅 Cierre de inscripciones: {{ conv.fecha_cierre }}
         </p>
-      {% endif %}
-    </div>
-  {% endfor %}
-{% else %}
-  <div class="notice--info">
-    <p>Estamos actualizando la base de datos. Por favor, regresa pronto para ver nuevas vacantes.</p>
-  </div>
-{% endif %}
+
+        <div style="line-height: 1.8; color: #444;">
+          {{ conv.descripcion }}
+        </div>
+
+        {% if conv.estado contains 'Abierta' %}
+          <a href="{{ conv.link_inscripcion }}" class="btn-gida" target="_blank">Postularme</a>
+        {% else %}
+          <p style="margin-top: 20px; color: #888; font-style: italic;">🚫 Convocatoria cerrada</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No hay convocatorias registradas actualmente.</p>
+  {% endif %}
 </div>
+
+<script>
+  const canvas = document.getElementById('canvas-estrellas');
+  const ctx = canvas.getContext('2d');
+  let w, h, stars = [];
+
+  function init() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = 400; // Altura del header
+    stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 2,
+        speed: Math.random() * 0.5
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#fff';
+    stars.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+      ctx.fill();
+      s.y -= s.speed;
+      if (s.y < 0) s.y = h;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', init);
+  init();
+  draw();
+</script>
