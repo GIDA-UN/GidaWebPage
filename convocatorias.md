@@ -53,25 +53,41 @@ header:
     margin-top: 15px;
   }
 </style>
-
 <div class="convocatorias-wrapper">
   {% if site.data.convocatorias %}
     {% for conv in site.data.convocatorias %}
-      <div class="card-gida">
-        <div class="status-badge">{{ conv.estado }}</div>
-        <h2 style="margin: 0 0 10px 0; border: none; color: #333;">{{ conv.titulo }}</h2>
-        <p style="color: #950001; font-weight: bold;">📅 Cierre: {{ conv.fecha_cierre }}</p>
-        <div style="line-height: 1.6; color: #444;">{{ conv.descripcion }}</div>
+      <div class="card-gida {% if conv.estado contains 'Abierta' %}card-abierta{% endif %}">
         
+        <div class="status-badge {% if conv.estado contains 'Abierta' %}badge-abierta{% else %}badge-cerrada{% endif %}">
+          {{ conv.estado }}
+        </div>
+
+        <h2 style="margin: 0 0 10px 0; color: #333; border: none;">{{ conv.titulo }}</h2>
+        
+        <p style="color: #950001; font-weight: bold;">
+          📅 Cierre: {{ conv.fecha_cierre }}
+        </p>
+
+        <div style="line-height: 1.6; color: #444; margin-bottom: 20px;">
+          {{ conv.descripcion }}
+        </div>
+
         {% if conv.estado contains 'Abierta' %}
-          <a href="{{ conv.link_inscripcion }}" class="btn-gida" target="_blank">Postularme</a>
+          {% if conv.link_inscripcion and conv.link_inscripcion != "" and conv.link_inscripcion != "#" %}
+            <a href="{{ conv.link_inscripcion }}" class="btn-gida" target="_blank">Postularme ahora</a>
+          {% else %}
+            <p style="color: #d35400; font-weight: bold; background: #fff3e0; padding: 10px; border-radius: 5px; display: inline-block;">
+              ⚠️ No hay link disponible todavía
+            </p>
+          {% endif %}
         {% else %}
-          <p style="margin-top: 15px; color: #888; font-style: italic;">🚫 Convocatoria cerrada</p>
+          <p style="color: #888; font-style: italic;">🚫 Esta convocatoria ya ha finalizado.</p>
         {% endif %}
+
       </div>
     {% endfor %}
   {% else %}
-    <p>No hay convocatorias vigentes en este momento.</p>
+    <p>No hay datos disponibles.</p>
   {% endif %}
 </div>
 
