@@ -9,25 +9,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Permiso explícito para que el robot pueda guardar el .yml
+      contents: write # Permiso necesario para guardar el .yml generado
     steps:
     - uses: actions/checkout@v3
-    
+      with:
+        fetch-depth: 0 # Trae el historial para evitar errores de push
+
     - name: Configurar Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.9' #
         
     - name: Instalar PyYAML
-      run: pip install pyyaml
+      run: pip install pyyaml # Librería necesaria para crear el archivo YAML
         
     - name: Ejecutar Script de Conversion
-      run: python convertir_datos.py
+      run: python convertir_datos.py # Ejecuta tu lógica de limpieza
       
     - name: Commit y Push del YAML generado
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add _data/*.yml
-        git commit -m "🤖 Auto-update: CSV a YAML" || exit 0
-        git push
+        git config --local user.email "action@github.com" #
+        git config --local user.name "GitHub Action" #
+        git add _data/*.yml # Prepara los archivos convertidos
+        git commit -m "🤖 Auto-update: CSV a YAML" || exit 0 # Evita error si no hay cambios
+        git push # Sube los cambios a la web
+        
