@@ -4,7 +4,7 @@ title: "Recuerdos GIDA"
 permalink: /recuerdos/
 author_profile: true
 header:
-  overlay_color: "#05070a" # Color base oscuro para el espacio
+  overlay_color: "#05070a"
   caption: "Galeria conmemorativa del GIDA"
 ---
 
@@ -13,24 +13,24 @@ header:
 </div>
 
 <style>
-  /* 2. AJUSTES DEL HEADER DEL TEMA */
   header.page__hero--overlay, .page__hero--overlay {
     position: relative !important;
-    background-color: #05070a !important; /* Fondo negro espacial */
+    background-color: #05070a !important;
     overflow: hidden;
   }
 
   .page__hero-content, .wrapper {
     position: relative;
-    z-index: 5; /* Asegura que el título esté sobre las estrellas */
+    z-index: 5;
   }
 
-  /* 3. ESTILOS DE TU COLLAGE (Mantenemos tu diseño original) */
+  /* --- NUEVO COLLAGE TIPO Mosaico --- */
   .collage-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    grid-auto-rows: 150px;
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-auto-rows: 180px; /* Altura base */
+    grid-auto-flow: dense; /* Rellena huecos automáticamente */
+    gap: 12px;
     padding: 20px;
     background: #f4f4f4;
     border-radius: 10px;
@@ -46,50 +46,57 @@ header:
     animation: float 6s ease-in-out infinite;
   }
 
+  /* Variedad de tamaños aleatoria mediante selectores CSS */
+  .collage-item:nth-child(5n) { grid-column: span 2; grid-row: span 2; } /* Grandes */
+  .collage-item:nth-child(7n) { grid-column: span 2; } /* Alargadas horizontales */
+  .collage-item:nth-child(3n) { grid-row: span 2; } /* Alargadas verticales */
+
   @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(2px, -5px) rotate(1deg); }
-    66% { transform: translate(-2px, 5px) rotate(-1deg); }
+    33% { transform: translate(2px, -5px) rotate(0.5deg); }
+    66% { transform: translate(-2px, 5px) rotate(-0.5deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
   }
 
-  .collage-item:nth-child(odd) { animation-duration: 7s; }
-  .collage-item:hover { transform: scale(1.1); z-index: 10; cursor: pointer; }
+  .collage-item:hover { transform: scale(1.05); z-index: 10; cursor: pointer; filter: brightness(1.1); }
 </style>
 
-Esta sección rinde homenaje a nuestra trayectoria. Las imágenes se entrelazan y fluyen con suavidad.
+Esta sección rinde homenaje a nuestra trayectoria. Las imágenes fluyen en un mosaico dinámico.
 
 <div class="collage-container" id="collage">
+  {% assign count = 0 %}
   {% for file in site.static_files %}
     {% if file.path contains 'assets/images/recuerdos' %}
-      <img src="{{ file.path | relative_url }}" class="collage-item" alt="Recuerdo GIDA">
+      {% if count < 100 %}
+        <img src="{{ file.path | relative_url }}" 
+             class="collage-item" 
+             alt="Recuerdo GIDA" 
+             loading="lazy"> {% assign count = count | plus: 1 %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // --- LÓGICA DE ESTRELLAS ---
+    // --- ESTRELLAS ---
     const canvas = document.getElementById('canvas-estrellas');
     const ctx = canvas.getContext('2d');
     const header = document.querySelector('.page__hero--overlay') || document.querySelector('header');
     const container = document.getElementById('mi-header-espacial');
 
     if (header && container) {
-      header.appendChild(container); // Metemos el canvas dentro de la cinta del header
-      
+      header.appendChild(container);
       function resize() {
         canvas.width = header.offsetWidth;
         canvas.height = header.offsetHeight;
       }
-
       let stars = Array.from({length: 120}, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * 400,
         r: Math.random() * 1.5,
         v: Math.random() * 0.4
       }));
-
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
@@ -100,12 +107,11 @@ Esta sección rinde homenaje a nuestra trayectoria. Las imágenes se entrelazan 
         });
         requestAnimationFrame(animate);
       }
-
       window.addEventListener('resize', resize);
       resize(); animate();
     }
 
-    // --- LÓGICA DE BARAJADO DEL COLLAGE ---
+    // --- BARAJADO (Shuffle) ---
     const collageContainer = document.getElementById('collage');
     const items = Array.from(collageContainer.children);
     for (let i = items.length - 1; i > 0; i--) {
