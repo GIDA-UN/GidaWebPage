@@ -133,7 +133,7 @@ analytics:
 # toca despues cambiar el logo , y adicional , los correos y eso 
 author:
   name             : "GIDA" # Cambia "Your Name" por "GIDA"
-  avatar           : /assets/images/logo_gida.jpg
+  avatar           : #/assets/images/logo_gida.jpg
   bio              : "Grupo de Investigación y Desarrollo Aeroespacial - UNAL"
   location         : "Bogotá, Colombia"
   email            :
