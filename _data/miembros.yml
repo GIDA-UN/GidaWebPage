@@ -105,3 +105,11 @@
   correo: "ljimenezpr@unal.edu.co"
   foto: "/assets/images/miembros/yo - Laura Daniela Jimenez Prada.jpeg"
   descripcion: "Participa en el área de satélites aportando una perspectiva geológica al análisis de datos espaciales. Interesada en la integración entre ciencias de la Tierra y tecnologías aeroespaciales."
+
+- nombre: "Luis Alejandro Riaño Molina"
+  tipo: "egresado"
+  area: "Cohetería"
+  carrera: "Ingeniería Mecánica"
+  correo: "lriano@unal.edu.co"
+  foto: "assets\images\miembros\WhatsApp Image 2026-03-22 at 8.02.53 PM.jpeg
+  descripcion: "Ingeniero Mecánico egresado con experiencia en el análisis de fragilización por hidrógeno en materiales mediante modelos avanzados como Phase Field Damage Model (PFDM), Hydrogen Enhanced Decohesion (HEDE) y Hydrogen Enhanced Localized Plasticity (HELP). Ha trabajado en la caracterización de inyectores mediante simulación por elementos finitos utilizando OpenFOAM. Cuenta con participación en congresos internacionales como Mars Society (2019), CATE (2021) y CEC (2023), además de experiencia en diseño de misiones análogas como oficial de control."
