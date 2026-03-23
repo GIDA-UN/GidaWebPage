@@ -37,3 +37,61 @@ Nota: El paso de creación de archivos individuales para cada pestaña del menú
 
 
 se creo una carpeta en assets que guarda las imagenes de recuerdos , y se implemento recuerdos.md la parte de container es la que vamos a modificar para que sea dinamica cada vez que cargemos va a generarse de manera aleatoria el orden de las imagenes 
+-------------------------------------------------------------------------------------------------------------------------------------------
+---
+
+## 📂 Gestión de Miembros (Actualización de Información)
+
+Se ha centralizado la gestión de la información de los miembros del grupo mediante herramientas compartidas en el Drive de GIDA.
+
+Actualmente se dispone de:
+- Un formulario (Forms) para el registro de nuevos integrantes.  
+- Un archivo Excel consolidado con toda la información recolectada.
+
+### 🔄 Flujo recomendado de actualización
+
+Para garantizar consistencia y facilitar la gestión del sitio web, se debe seguir el siguiente proceso:
+
+1. **Registro de información**  
+   Todos los nuevos miembros deben diligenciar el formulario.  
+   Esto asegura que la información quede almacenada correctamente en el Excel.
+
+2. **Actualización de datos**  
+   A partir del Excel, se obtienen los datos para actualizar el archivo:
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+3. **Gestión de imágenes**  
+- Las imágenes deben guardarse en:
+  ```
+  /assets/images/miembros/
+  ```
+- Se debe respetar el nombre original del archivo de la imagen.
+
+4. **Actualización del archivo YAML**  
+- Se deben añadir o actualizar los registros en:
+  ```
+  _data/miembros.yml
+  ```
+- Verificar que:
+  - El campo `tipo` sea exactamente: `pregrado`, `posgrado` o `egresado`
+  - La ruta de la imagen (`foto`) sea correcta
+  - La sangría sea de 2 espacios (formato YAML válido)
+
+---
+
+### ⚠️ Consideraciones importantes
+
+- Toda la información debe diligenciarse primero en el Forms.  
+- No se recomienda editar directamente el YAML sin pasar por el Excel.  
+- Errores en el campo `tipo` o en la ruta de la imagen impedirán que el miembro se visualice correctamente en la página.
+
+---
+
+### 🚀 Buenas prácticas
+
+- Mantener el Excel actualizado antes de modificar el YAML  
+- Verificar rutas de imágenes antes de hacer commit  
+- Evitar registros duplicados  
+- Revisar la página después de cada cambio  
+
+---
