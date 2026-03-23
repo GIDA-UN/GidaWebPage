@@ -109,7 +109,7 @@ Cursos y memorias audiovisuales de nuestras actividades académicas.
 
 <div class="yt-grid">
   <div class="yt-card">
-    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/image_1f2be0.jpg" | relative_url }}');">
+    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/imagen_play_list_1.jpg" | relative_url }}');">
        <div class="yt-overlay">CURSO</div>
     </div>
     <div class="yt-info">
@@ -119,7 +119,7 @@ Cursos y memorias audiovisuales de nuestras actividades académicas.
   </div>
 
   <div class="yt-card">
-    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/image_1f2c41.jpg" | relative_url }}');">
+    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/imagen_play_list_2.jpg" | relative_url }}');">
        <div class="yt-overlay">VIRTUAL</div>
     </div>
     <div class="yt-info">
@@ -129,7 +129,7 @@ Cursos y memorias audiovisuales de nuestras actividades académicas.
   </div>
 
   <div class="yt-card">
-    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/image_1f2f2c.png" | relative_url }}');">
+    <div class="yt-thumb" style="background-image: url('{{ "/assets/images/imagen_play_list_3.jpg" | relative_url }}');">
        <div class="yt-overlay">MEMORIAS</div>
     </div>
     <div class="yt-info">
@@ -139,20 +139,6 @@ Cursos y memorias audiovisuales de nuestras actividades académicas.
   </div>
 </div>
 
-## 🎥 Contenido Adicional Destacado
-Entrevistas y material especial con expertos internacionales.
-
-<div class="yt-grid">
-  <div class="yt-card">
-    <div class="yt-thumb" style="background-image: url('https://img.youtube.com/vi/0lkiC00OgKE/0.jpg');">
-       <div class="yt-overlay">DESTACADO</div>
-    </div>
-    <div class="yt-info">
-      <a href="https://youtu.be/0lkiC00OgKE" class="yt-title" target="_blank">Entrevista Jacky Silva-Martínez</a>
-      <p class="yt-desc">Conversación desde el Johnson Space Center de la NASA sobre su trayectoria y el futuro espacial.</p>
-    </div>
-  </div>
-</div>
 ## 🎥 Contenido Adicional Destacado
 Entrevistas y material especial con expertos internacionales.
 
