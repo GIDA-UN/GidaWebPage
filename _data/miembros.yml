@@ -1,32 +1,115 @@
-# ============================================================
-# GUÍA DE MANTENIMIENTO DE MIEMBROS - GIDA
-# ============================================================
-# Para agregar a alguien nuevo, copia y pega el bloque de abajo.
-# IMPORTANTE: 
-# 1. Respeta los dos espacios de sangría.
-# 2. Las fotos deben estar en /assets/images/miembros/
-# 3. Si un dato tiene comas, usa comillas "Ejemplo, Ingeniero".
-# ============================================================
 # ==========================================
-# BLOQUE DE DATOS: Agrega aquí a los miembros
+# BLOQUE DE DATOS: Miembros GIDA
 # ==========================================
-- nombre: "Juan Astronauta"
-  tipo: "pregrado"     # <--- Identificador clave
-  area: "Propulsión"
-  carrera: "Ing. Mecánica"
-  correo: "juan@unal.edu.co"
-  foto: "/assets/images/miembros/default.jpg"
 
-- nombre: "Ingeniera Senior"
-  tipo: "egresado"     # <--- Identificador clave
-  area: "Estructuras"
-  carrera: "Ing. Aeroespacial"
-  correo: "ing@unal.edu.co"
-  foto: "/assets/images/miembros/default.jpg"
+- nombre: "Laura Daniella Buitrago Quintero"
+  tipo: "pregrado"
+  area: "Telecomunicaciones"
+  carrera: "Ingeniería Mecatrónica"
+  correo: ""
+  foto: "/assets/images/miembros/IMG-20260308-WA0000 - Laura Daniella Buitrago Quintero.jpg"
+  descripcion: "Estudiante de Ingeniería Mecatrónica con interés en telecomunicaciones y sistemas de antenas. Su motivación se fundamenta en el potencial de la tecnología para expandir las fronteras del conocimiento humano en el espacio y el tiempo. Ha participado en el desarrollo de proyectos relacionados con diseño y análisis de antenas dentro del grupo GIDA, integrando conceptos de propagación electromagnética y sistemas de comunicación."
 
-- nombre: "Juan Astronauta 2 "
-  tipo: "posgrado"     # <--- Identificador clave
+- nombre: "Diego Fernando Fernández Narváez"
+  tipo: "pregrado"
+  area: "Telecomunicaciones"
+  carrera: "Ingeniería Electrónica"
+  correo: ""
+  foto: "/assets/images/miembros/DFFN - Diego Fernando Fernandez Narvaez.png"
+  descripcion: "Estudiante enfocado en el análisis de sistemas de microondas, teoría de propagación de ondas electromagnéticas y desarrollo de sistemas embebidos. Sus intereses incluyen el diseño de sistemas de control y aplicaciones en telecomunicaciones avanzadas, con énfasis en entornos aeroespaciales."
+
+- nombre: "Gabriela Suarez Arismendy"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/WhatsApp Image 2026-03-03 at 3.27.05 PM - Gabriela Suarez Arismendy.jpeg"
+  descripcion: "Integrante del grupo GIDA con interés en el desarrollo de tecnologías aplicadas al sector aeroespacial. Participa en iniciativas de investigación orientadas a la integración de sistemas y desarrollo de soluciones innovadoras."
+
+- nombre: "Juan Sebastian Paredes De La Cruz"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/personal 3x4 - Juan Sebastian Paredes De La Cruz.jpg"
+  descripcion: "Estudiante vinculado al grupo GIDA, interesado en el desarrollo de proyectos de ingeniería aplicada al sector aeroespacial, con enfoque en análisis técnico y solución de problemas complejos."
+
+- nombre: "Cristian Danilo Romero Orjuela"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/IMG-20260315-WA0066 - Cristian Danilo Romero Orjuela.jpg"
+  descripcion: "Miembro del grupo GIDA con interés en investigación aplicada y desarrollo tecnológico en ingeniería. Participa en proyectos multidisciplinarios orientados a innovación en sistemas aeroespaciales."
+
+- nombre: "Pablo Muñoz Jaramillo"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/IMG-20260204-WA0002 - Pablo Munoz Jaramillo.jpg"
+  descripcion: "Estudiante con interés en el desarrollo de tecnologías emergentes aplicadas al sector aeroespacial, participando en procesos de investigación y desarrollo dentro del grupo GIDA."
+
+- nombre: "Jesus Andres Acosta Varela"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/IMG_5848 - Jesus Andres Acosta Varela.jpeg"
+  descripcion: "Integrante del grupo GIDA con enfoque en el desarrollo de soluciones tecnológicas en ingeniería, participando en proyectos de investigación con impacto en aplicaciones aeroespaciales."
+
+- nombre: "Diego Andres Mendoza"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/IMG_2331 - Diego Andres Mendoza.JPG"
+  descripcion: "Estudiante interesado en el análisis y desarrollo de sistemas de ingeniería aplicados al sector aeroespacial, con participación en proyectos de investigación dentro del grupo."
+
+- nombre: "Jesus Manuel Aragon Buitrago"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/IDPhoto_20260309_232536 - Jesus Manuel Aragon Buitrago.jpg"
+  descripcion: "Miembro activo del grupo GIDA enfocado en el desarrollo de capacidades técnicas en ingeniería aplicada, con interés en investigación aeroespacial."
+
+- nombre: "Paola Alejandra Bello Buitrago"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/Foto presentación - Paola Alejandra Bello Buitrago.jpg"
+  descripcion: "Estudiante vinculada a GIDA con interés en el desarrollo de proyectos tecnológicos y de investigación orientados al sector aeroespacial."
+
+- nombre: "Carlos Fernando Quintero Castillo"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/20250101_000542 - Carlos Fernando Quintero Castillo.png"
+  descripcion: "Miembro del grupo GIDA con participación en la coordinación y desarrollo de iniciativas académicas y de investigación en el área aeroespacial."
+
+- nombre: "Jhon Fredy Tiuso Calderon"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/WhatsApp Image 2026-03-15 at 7.53.58 PM - Jhon Fredy Tiuso Calderon.jpeg"
+  descripcion: "Estudiante integrante del grupo GIDA con interés en el desarrollo de proyectos de ingeniería aplicada y tecnologías aeroespaciales."
+
+- nombre: "Laura Daniela Jimenez Prada"
+  tipo: "pregrado"
+  area: ""
+  carrera: ""
+  correo: ""
+  foto: "/assets/images/miembros/yo - Laura Daniela Jimenez Prada.jpeg"
+  descripcion: "Miembro del grupo GIDA interesada en el desarrollo de investigación interdisciplinaria en ingeniería, con enfoque en aplicaciones tecnológicas innovadoras."
+
+- nombre: "Luis Alejandro Riaño Molina"
+  tipo: "pregrado"
   area: "Propulsión"
-  carrera: "Ing. Mecánica"
-  correo: "juan@unal.edu.co"
+  carrera: "Ingeniería Mecánica"
+  correo: "lriano@unal.edu.co"
   foto: "/assets/images/miembros/default.jpg"
+  descripcion: "Estudiante de Ingeniería Mecánica enfocado en el análisis de fenómenos de fragilización por hidrógeno en materiales mediante modelos avanzados como Phase Field Damage Model (PFDM), Hydrogen Enhanced Decohesion (HEDE) y Hydrogen Enhanced Localized Plasticity (HELP). Ha trabajado en la caracterización de inyectores mediante simulación por elementos finitos utilizando OpenFOAM. Cuenta con participación en congresos internacionales como el Mars Society Convention (2019), CATE (2021) y CEC (2023), además de experiencia en diseño de misiones análogas como oficial de control en entornos simulados."
