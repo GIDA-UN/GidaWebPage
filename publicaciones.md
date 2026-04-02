@@ -6,57 +6,165 @@ author_profile: true
 header:
   overlay_color: "#05070a"
 ---
+<div id="mi-header-espacial" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;">
+  <canvas id="canvas-estrellas"></canvas>
+</div>
 
 <style>
-  /* Filtros por Año */
-  .filter-container { margin-bottom: 40px; text-align: center; }
-  .filter-btn {
-    background: #f4f4f4; border: 1px solid #ddd; padding: 8px 18px;
-    margin: 5px; border-radius: 20px; cursor: pointer; transition: 0.3s;
-    font-family: inherit;
+  /* 1. AJUSTES DEL HEADER (Para que funcionen las estrellas) */
+  .page__hero--overlay { 
+    position: relative !important; 
+    background-color: #05070a !important; 
+    overflow: hidden; 
   }
-  .filter-btn.active { background: #950001; color: white; border-color: #950001; }
 
-  /* Grid de Artículos */
-  .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+  /* 2. FILTROS POR AÑO */
+  .filter-container { 
+    margin-bottom: 40px; 
+    text-align: center; 
+    position: relative;
+    z-index: 10;
+  }
+  .filter-btn {
+    background: #f4f4f4; 
+    border: 1px solid #ddd; 
+    padding: 8px 18px;
+    margin: 5px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: 0.3s;
+    font-family: inherit;
+    font-weight: 500;
+  }
+  .filter-btn:hover { background: #e0e0e0; }
+  .filter-btn.active { 
+    background: #950001; 
+    color: white !important; 
+    border-color: #950001; 
+    box-shadow: 0 4px 10px rgba(149, 0, 1, 0.3);
+  }
+
+  /* 3. GRID DE ARTÍCULOS */
+  .pub-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 25px; 
+  }
   
   .pub-card {
-    background: #fff; border-radius: 10px; border: 1px solid #e1e1e1;
-    display: flex; flex-direction: column; transition: 0.3s; position: relative;
+    background: #fff; 
+    border-radius: 10px; 
+    border: 1px solid #e1e1e1;
+    display: flex; 
+    flex-direction: column; 
+    transition: 0.3s; 
+    position: relative;
     height: 100%;
   }
-  .pub-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+  .pub-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+  }
   
   .pub-badge {
-    position: absolute; top: 15px; right: 15px; background: #950001;
-    color: white; padding: 2px 10px; border-radius: 5px; font-size: 0.8em; font-weight: bold;
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    background: #950001;
+    color: white; 
+    padding: 2px 12px; 
+    border-radius: 5px; 
+    font-size: 0.85em; 
+    font-weight: bold;
   }
 
   .pub-body { padding: 25px; flex-grow: 1; }
-  .pub-title { font-weight: bold; font-size: 1.1em; color: #2c3e50; margin-bottom: 12px; display: block; line-height: 1.3; }
-  .pub-authors { font-size: 0.85em; color: #7f8c8d; margin-bottom: 12px; font-style: italic; }
-  .pub-excerpt { font-size: 0.9em; line-height: 1.5; color: #444; text-align: justify; }
+  .pub-title { 
+    font-weight: bold; 
+    font-size: 1.15em; 
+    color: #2c3e50; 
+    margin-bottom: 12px; 
+    display: block; 
+    line-height: 1.3; 
+    padding-right: 40px; /* Espacio para el badge */
+  }
+  .pub-authors { 
+    font-size: 0.85em; 
+    color: #7f8c8d; 
+    margin-bottom: 12px; 
+    font-style: italic; 
+  }
+  .pub-excerpt { 
+    font-size: 0.95em; 
+    line-height: 1.6; 
+    color: #444; 
+    text-align: justify; 
+  }
 
-  .pub-footer { background: #fdfdfd; padding: 15px; border-top: 1px solid #eee; text-align: center; border-radius: 0 0 10px 10px; }
+  .pub-footer { 
+    background: #fdfdfd; 
+    padding: 15px; 
+    border-top: 1px solid #eee; 
+    text-align: center; 
+    border-radius: 0 0 10px 10px; 
+  }
   .btn-view { 
-    background: #2980b9; color: white !important; padding: 8px 20px; 
-    border-radius: 5px; text-decoration: none !important; font-size: 0.9em; cursor: pointer; display: inline-block;
+    background: #2980b9; 
+    color: white !important; 
+    padding: 10px 25px; 
+    border-radius: 6px; 
+    text-decoration: none !important; 
+    font-size: 0.95em; 
+    cursor: pointer; 
+    display: inline-block;
+    transition: background 0.3s;
   }
   .btn-view:hover { background: #1f6391; }
 
-  /* MODAL DEL VISOR PDF */
+  /* 4. MODAL DEL VISOR PDF (PROFESIONAL) */
   .modal-visor {
-    display: none; position: fixed; z-index: 9999; left: 0; top: 0;
-    width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
+    display: none; 
+    position: fixed; 
+    z-index: 10000; /* Por encima de todo */
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.95);
   }
   .modal-content {
-    position: relative; margin: auto; width: 95%; height: 90%; top: 5%;
+    position: relative; 
+    margin: auto; 
+    width: 95%; 
+    height: 85vh; 
+    top: 7vh;
   }
   .close-visor {
-    position: absolute; top: -45px; right: 0; color: #fff; font-size: 40px;
-    font-weight: bold; cursor: pointer; line-height: 1;
+    position: absolute; 
+    top: -50px; 
+    right: 0; 
+    color: #fff; 
+    font-size: 45px;
+    font-weight: 300; 
+    cursor: pointer; 
+    line-height: 1;
+    transition: color 0.3s;
   }
-  iframe { width: 100%; height: 100%; border: none; border-radius: 4px; background: white; }
+  .close-visor:hover { color: #950001; }
+  
+  iframe { 
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+    border-radius: 5px; 
+    background: #333; 
+  }
+
+  /* Ajustes para móviles */
+  @media (max-width: 600px) {
+    .modal-content { width: 100%; height: 80vh; top: 10vh; }
+    .pub-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <div class="filter-container">
@@ -260,33 +368,77 @@ header:
 </div>
 
 <script>
-  function filterPubs(year, btn) {
-    const cards = document.querySelectorAll('.pub-card');
-    const btns = document.querySelectorAll('.filter-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    cards.forEach(card => {
-      if (year === 'all' || card.getAttribute('data-year') === year) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
+  document.addEventListener("DOMContentLoaded", function() {
+    // === 1. LÓGICA DEL HEADER ESPACIAL ===
+    const canvas = document.getElementById('canvas-estrellas');
+    const ctx = canvas.getContext('2d');
+    const header = document.querySelector('.page__hero--overlay') || document.querySelector('header');
+    const container = document.getElementById('mi-header-espacial');
+
+    if (header && container) {
+      header.appendChild(container);
+      
+      function resize() { 
+        canvas.width = header.offsetWidth; 
+        canvas.height = header.offsetHeight; 
       }
-    });
-  }
 
-  function openVisor(pdfPath) {
-    document.getElementById('pdfIframe').src = pdfPath;
-    document.getElementById('visorPanel').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-  }
+      let stars = Array.from({length: 150}, () => ({
+        x: Math.random() * window.innerWidth, 
+        y: Math.random() * 400, 
+        r: Math.random() * 1.5, 
+        v: Math.random() * 0.5 
+      }));
 
-  function closeVisor() {
-    document.getElementById('visorPanel').style.display = 'none';
-    document.getElementById('pdfIframe').src = '';
-    document.body.style.overflow = 'auto';
-  }
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        ctx.fillStyle = "white";
+        stars.forEach(s => {
+          ctx.beginPath(); 
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); 
+          ctx.fill();
+          s.y += s.v; 
+          if (s.y > canvas.height) s.y = 0;
+        });
+        requestAnimationFrame(animate);
+      }
 
-  window.onkeydown = function(event) {
-    if (event.keyCode == 27) closeVisor();
-  }
+      window.addEventListener('resize', resize); 
+      resize(); 
+      animate();
+    }
+
+    // === 2. LÓGICA DE FILTRADO Y VISOR ===
+    // Definimos las funciones globalmente para que los botones onclick las encuentren
+    window.filterPubs = function(year, btn) {
+      const cards = document.querySelectorAll('.pub-card');
+      const btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      cards.forEach(card => {
+        if (year === 'all' || card.getAttribute('data-year') === year) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    window.openVisor = function(pdfPath) {
+      document.getElementById('pdfIframe').src = pdfPath;
+      document.getElementById('visorPanel').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    window.closeVisor = function() {
+      document.getElementById('visorPanel').style.display = 'none';
+      document.getElementById('pdfIframe').src = '';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar visor con la tecla Escape
+    window.onkeydown = function(event) {
+      if (event.keyCode == 27) closeVisor();
+    }
+  });
 </script>
