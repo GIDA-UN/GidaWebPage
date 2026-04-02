@@ -91,3 +91,44 @@ Para clonar y trabajar en este proyecto localmente:
 
 ---
 **GIDA - Grupo de Investigación y Desarrollo Aeroespacial** *Universidad Nacional de Colombia - Facultad de Ingeniería* *Sede Bogotá, Colombia.*
+
+---
+
+## 🛠️ Actualizaciones de Arquitectura (Fase 2)
+
+### 1. Sistema de Visualización de Miembros (Interactive 3D Cards)
+Se ha implementado un sistema de **Flip Cards** mediante CSS 3D para la sección de miembros, optimizando el espacio y la interacción:
+* **Efecto Flip:** Utiliza `transform: rotateY(180deg)` con una transición `cubic-bezier` para un giro elástico y fluido.
+* **Dimensiones Premium:** Las tarjetas se ajustaron a una altura de **520px** para maximizar el impacto visual de las fotografías (320px de altura) y la legibilidad.
+* **Gestión de Contenido:** La parte posterior de la tarjeta incluye un contenedor con **scroll dinámico** para descripciones extensas, evitando que el diseño se rompa si la biografía es muy larga.
+* **Versatilidad:** Se integró el campo de correo electrónico para todas las categorías, incluyendo **Egresados**, facilitando el networking.
+
+### 2. Motor de Publicaciones y Visor PDF
+La sección `publicaciones.md` ahora actúa como un repositorio documental avanzado:
+* **Filtros Dinámicos (JS):** Se programó un motor de filtrado por año que manipula el DOM en tiempo real, permitiendo a los usuarios segmentar los 15 artículos principales sin recargar la página.
+* **Visor Profesional (Modal):** En lugar de descargar el archivo, se implementó un **Lightbox de PDF** utilizando un `iframe` dentro de un modal de alta prioridad (`z-index: 10000`). Esto permite:
+    * Visualización inmediata con herramientas de zoom nativas.
+    * Opción de impresión y descarga desde la misma interfaz.
+    * Cierre rápido mediante la tecla `ESC` o botón dedicado.
+* **Rutas de Archivos:** Los documentos se sirven directamente desde la raíz en `/ARTICULOS/` para simplificar la gestión de enlaces permanentes.
+
+### 3. Componente "Header Espacial" (Canvas FX)
+Se estandarizó el uso del **Lienzo de Estrellas Animadas** en todas las secciones clave (`miembros`, `publicaciones`, `proyectos`):
+* **Motor de Animación:** Basado en la API `requestAnimationFrame` para un rendimiento de 60 FPS sin sobrecargar la CPU.
+* **Inyección Dinámica:** El script busca automáticamente el elemento `.page__hero--overlay` de la plantilla *Minimal Mistakes* e inyecta el canvas, asegurando que las estrellas siempre queden detrás del título de la página.
+* **Responsive Design:** Incluye un *listener* de cambio de tamaño (`window.resize`) para recalcular el área de las estrellas si el usuario gira el dispositivo o cambia el tamaño de la ventana.
+
+### 4. Gestión de Proyectos y Líderes
+La sección de Proyectos se estructuró para presentar la visión actual del grupo:
+* **Líneas de Investigación:** Narrativa detallada sobre la Base de Pruebas, Cohetería Experimental y SpaceCrops.
+* **Módulo de Liderazgo:** Tarjetas de contacto directo para los responsables de proyecto (Jesús Acosta y Paola Bello), vinculando sus correos institucionales para agilizar la comunicación técnica.
+
+---
+
+## 🚦 Próximos Pasos (Backlog)
+* **Optimización de Imágenes:** Pasar las fotos de los 15 artículos y miembros por un compresor WebP para reducir el tiempo de carga inicial.
+* **SEO:** Verificar que cada archivo `.md` tenga un `description` en el Front Matter para mejorar el ranking en Google.
+* **Consolidación:** Migrar los estilos `<style>` de cada página a un archivo central `_sass/custom.scss` para facilitar el mantenimiento global.
+
+---
+**"Per aspera ad astra"** - GIDA UNAL 2026.
